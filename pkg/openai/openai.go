@@ -16,15 +16,20 @@ func Init(token string) Client {
 }
 
 func (c *Client) Translate(message string, fromLang string, toLang string) (string, error) {
-	response, err := c.Client.CreateCompletion(
+	response, err := c.Client.CreateChatCompletion(
 		context.Background(),
-		go_openai.CompletionRequest{
-			Model:  go_openai.GPT4,
-			Prompt: fmt.Sprintf("Translate the following text from %s to %s: \"%s\"", fromLang, toLang, message),
+		go_openai.ChatCompletionRequest{
+			Model: go_openai.GPT4,
+			Messages: []go_openai.ChatCompletionMessage{
+				{
+					Role:    go_openai.ChatMessageRoleUser,
+					Content: fmt.Sprintf("Translate the following text from %s to %s: \"%s\"", fromLang, toLang, message),
+				},
+			},
 		},
 	)
 	if err != nil {
 		return "", err
 	}
-	return response.Choices[0].Text, nil
+	return response.Choices[0].Message.Content, nil
 }

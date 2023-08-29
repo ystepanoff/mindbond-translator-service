@@ -12,9 +12,9 @@ type Server struct {
 
 func (server *Server) Translate(ctx context.Context, request *pb.TranslateRequest) (*pb.TranslateResponse, error) {
 	result, err := server.TranslationClient.Translate(
+		request.Message,
 		request.FromLang,
 		request.ToLang,
-		request.Message,
 	)
 	if err != nil {
 		return nil, err
