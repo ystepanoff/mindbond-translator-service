@@ -1,2 +1,2 @@
 .idea
-pkg/config/envs/dev.env
+local_dev.env
