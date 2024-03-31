@@ -9,7 +9,7 @@ type Config struct {
 
 func LoadConfig() (config Config, err error) {
 	viper.AddConfigPath("./pkg/config/envs")
-	viper.SetConfigName("dev")
+	viper.SetConfigName("local_dev") // Change this; local_dev.env does not exist in remote!
 	viper.SetConfigType("env")
 
 	viper.AutomaticEnv()
