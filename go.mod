@@ -6,7 +6,7 @@ require (
 	github.com/sashabaranov/go-openai v1.18.3
 	github.com/spf13/viper v1.16.0
 	google.golang.org/grpc v1.57.1
-	google.golang.org/protobuf v1.30.0
+	google.golang.org/protobuf v1.33.0
 )
 
 require (
